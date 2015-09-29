@@ -1,5 +1,8 @@
 #Epi
+Simple snippets for EPiServer 7.5
+
 ##Models
+### Simple model
 ```
 using System.ComponentModel.DataAnnotations;
 
@@ -35,7 +38,7 @@ namespace Boomerang.Project.Areas.Layout.Models
 }
 
 ```
-###Types
+###Property types
 ####Bool
 ```
 [CultureSpecific]
@@ -66,8 +69,18 @@ public virtual string Width { get; set; }
     Order = 40)]
 public virtual Url Poster { get; set; }
 ```
-###Attributes
+###Property attributes
 Required - `[Required]`
+
+###Default values
+```
+public override void SetDefaultValues(ContentType contentType)
+{
+    base.SetDefaultValues(contentType);
+    Height = 240;
+    Width = 320;
+}
+```
 
 ##ViewModels
 ##Views
