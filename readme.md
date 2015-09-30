@@ -79,6 +79,15 @@ public virtual Url Poster { get; set; }
     Order = 51)]
 public virtual ContentArea MainContent { get; set; }
 ```
+####Block type property
+```
+[Display(
+    Name = "Video content",
+    Description = "Drop here VideoPlayer block",
+    GroupName = SystemTabNames.Content,
+    Order = 100)]
+public virtual SigniforVideoPlayerData VideoContent { get; set; }
+```
 ###Property attributes
 Required - `[Required]`
 Balue range - `[Range(50, 2000)]`
