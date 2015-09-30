@@ -69,8 +69,19 @@ public virtual string Width { get; set; }
     Order = 40)]
 public virtual Url Poster { get; set; }
 ```
+####Content area
+```
+[CultureSpecific]
+[Display(
+    Name = "Main",
+    Description = "Main Content",
+    GroupName = SystemTabNames.Content,
+    Order = 51)]
+public virtual ContentArea MainContent { get; set; }
+```
 ###Property attributes
 Required - `[Required]`
+Balue range - `[Range(50, 2000)]`
 
 ###Default values
 ```
@@ -105,3 +116,5 @@ namespace Boomerang.Signifor.Media
     }
 }
 ```
+##Interesting links
+[Awesome EPI](https://github.com/b1thunt3r/awesome-EPiServer)
