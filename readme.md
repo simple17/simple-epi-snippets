@@ -1,8 +1,9 @@
 #Epi
-Simple snippets for EPiServer 7.5
+Simple snippets/cheatsheet/whatever for EPiServer 7.5
 
 ##Models
 ### Simple model
+####Example 1
 ```
 using System.ComponentModel.DataAnnotations;
 
@@ -10,7 +11,7 @@ using EPiServer.Core;
 using EPiServer.DataAbstraction;
 using EPiServer.DataAnnotations;
 
-namespace Boomerang.Project.Areas.Layout.Models
+namespace SomeName.Project.Areas.Layout.Models
 {
     using DigiOne.Core.DataAbstraction;
     using DigiOne.Core.Styles;
@@ -18,11 +19,11 @@ namespace Boomerang.Project.Areas.Layout.Models
     using EPiServer;
 
     [ContentType(DisplayName = "Project block name",
-    GroupName = "Boomerang Project",
+    GroupName = "SomeName Project",
     Description = "Project block.",
     GUID = "E007684C-DE84-4F7D-9BE7-2F786BB4A81F"
     )]
-    [ImageUrl("~/modules/Boomerang.Project/Client/Icons/page-type-thumbnail.png")]
+    [ImageUrl("~/modules/SomeName.Project/Client/Icons/page-type-thumbnail.png")]
 
     public class ProjectBlockData : BlockData
     {
@@ -37,6 +38,34 @@ namespace Boomerang.Project.Areas.Layout.Models
     }
 }
 
+```
+####Example 2
+```
+using System.ComponentModel.DataAnnotations;
+using EPiServer.DataAbstraction;
+using EPiServer.DataAnnotations;
+
+namespace SomeName.Project.Areas.Layout.Models
+{
+    [ContentType(
+        DisplayName = "Project Red Text Block",
+        GroupName = "SomeName Project",
+        Description = "Text block with red background",
+        GUID = "EC2D89E2-CACE-4C87-96E7-CEB2E2B6DFEA"
+        )]
+    [ImageUrl("~/modules/SomeName.Project/Client/Icons/page-type-thumbnail.png")]
+    public class ProjectRedTextData : ProjectBaseBlock
+    {
+        [CultureSpecific]
+        [Display(
+            Name = "Text",
+            Description = "Text in block",
+            GroupName = SystemTabNames.Content,
+            Order = 10
+            )]
+        public virtual string Text { get; set; }
+    }
+}
 ```
 ###Property types
 ####Bool
@@ -86,7 +115,7 @@ public virtual ContentArea MainContent { get; set; }
     Description = "Drop here VideoPlayer block",
     GroupName = SystemTabNames.Content,
     Order = 100)]
-public virtual SigniforVideoPlayerData VideoContent { get; set; }
+public virtual ProjectVideoPlayerData VideoContent { get; set; }
 ```
 ###Property attributes
 Required - `[Required]`
@@ -103,19 +132,121 @@ public override void SetDefaultValues(ContentType contentType)
 ```
 
 ##ViewModels
+###Example 1
+```
+namespace SomeName.Project.Areas.Layout.ViewModels
+{
+    public class ProjectRedTextViewModel
+    {
+        public string Text { get; set; }
+    }
+}
+```
+###Example 2
+```
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+
+using EPiServer.Core;
+
+namespace SomeName.Project.Areas.Layout.ViewModels
+{
+    using DigiOne.Core.Styles;
+
+    using EPiServer;
+
+    public class ProjectImageViewModel
+    {
+
+        public Url Image { get; set; }
+
+        public String AltText { get; set; }
+
+        public String TitleText { get; set; }
+
+        public Url ImageModal { get; set; }
+
+        public Style Style { get; set; }
+
+    }
+}
+```
 ##Views
+```
+@model SomeName.Project.Areas.Layout.ViewModels.SigniforRedTextViewModel
+<div class="RedTextBlock">
+    <p>@Model.Text</p>
+</div>
+```
 ##Controllers
+###Example 1
+```
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web.Mvc;
+
+using SomeName.Project.Areas.Layout.Models;
+using SomeName.Project.Areas.Layout.ViewModels;
+
+using EPiServer.Shell;
+using EPiServer.Web.Mvc;
+
+namespace SomeName.Project.Areas.Layout.Controllers
+{
+    public class ProjectImageController : BlockController<ProjectImageData>
+    {
+        public override ActionResult Index(ProjectImageData currentBlock)
+        {
+            return PartialView(Paths.ToResource(this.GetType(), "Areas/Layout/Views/Image/Index.cshtml"), new ProjectImageViewModel
+            {
+                Image = currentBlock.Image,
+                AltText = currentBlock.AltText,
+                TitleText = currentBlock.TitleText,
+                ImageModal = currentBlock.ImageModal,
+                Style = currentBlock.Style
+            });
+        }
+    }
+}
+```
+###Example 2
+```
+namespace SomeName.Project.Areas.Layout.Controllers
+{
+    using System.Web.Mvc;
+
+    using SomeName.Project.Areas.Layout.Models;
+    using SomeName.Project.Areas.Layout.ViewModels;
+
+    using EPiServer.Shell;
+    using EPiServer.Web.Mvc;
+
+    public class ProjectRedTextController : BlockController<ProjectRedTextData>
+    {
+        public override ActionResult Index(ProjectRedTextData currentContent)
+        {
+            return this.PartialView(Paths.ToResource(this.GetType(), "Areas/Layout/Views/RedText/Index.cshtml"), new ProjectRedTextViewModel
+                                                                              {
+                                                                                  Text = currentContent.Text
+                                                                              });
+        }
+    }
+}
+```
 ##Stuff
 ###Media
 To make a new filetypes available for uploading you need to declare class for each type.
-Layout\Boomerang.ProjectName\Media\VideoFile.cs
+Layout\SomeName.ProjectName\Media\VideoFile.cs
 
 ```
 using EPiServer.Core;
 using EPiServer.DataAnnotations;
 using EPiServer.Framework.DataAnnotations;
 
-namespace Boomerang.Signifor.Media
+namespace SomeName.Project.Media
 {
     [ContentType]
     [MediaDescriptor(ExtensionString = "flv,mp4,webm,ogv")]
