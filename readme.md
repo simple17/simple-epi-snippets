@@ -256,5 +256,11 @@ namespace SomeName.Project.Media
     }
 }
 ```
+###Unique IDs
+```
+@{
+    var uniqueId = string.Format("carousel-{0:N}", Guid.NewGuid());
+}
+```
 ##Interesting links
 [Awesome EPI](https://github.com/b1thunt3r/awesome-EPiServer)
