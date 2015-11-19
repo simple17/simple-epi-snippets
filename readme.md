@@ -72,9 +72,9 @@ namespace SomeName.Project.Areas.Layout.Models
 ```
 [CultureSpecific]
 [Display(
-    Name = "Autoplay", 
-    Description = "Autoplay", 
-    GroupName = SystemTabNames.Content, 
+    Name = "Autoplay",
+    Description = "Autoplay",
+    GroupName = SystemTabNames.Content,
     Order = 70)]
 public virtual bool Autoplay { get; set; }
 ```
@@ -117,9 +117,26 @@ public virtual ContentArea MainContent { get; set; }
     Order = 100)]
 public virtual ProjectVideoPlayerData VideoContent { get; set; }
 ```
+####Integer
+```
+[CultureSpecific]
+[Range(50, 30000)]
+[Display(
+    Name = "Speed",
+    Description = "Autoplay speed",
+    GroupName = SystemTabNames.Content,
+    Order = 50)]
+public virtual Int32 Speed { get; set; }
+```
 ###Property attributes
 Required - `[Required]`
-Balue range - `[Range(50, 2000)]`
+Value range - `[Range(50, 2000)]`
+
+###Hide extended property
+```
+[ScaffoldColumn(false)]
+public override String CommonHeadCustomHTML { get; set; }
+```
 
 ###Default values
 ```
