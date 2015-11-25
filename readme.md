@@ -108,6 +108,28 @@ public virtual Url Poster { get; set; }
     Order = 51)]
 public virtual ContentArea MainContent { get; set; }
 ```
+
+####RTE
+```
+[CultureSpecific]
+[Display(
+    Name = "Policy",
+    Description = "Policy",
+    GroupName = SystemTabNames.Content,
+    Order = 65)]
+public virtual XhtmlString Policy { get; set; }
+```
+####Link Collection(Custom)
+```
+[CultureSpecific]
+[Display(
+    Name = "Links",
+    Description = "Header links",
+    GroupName = SystemTabNames.Content,
+    Order = 50)]
+public virtual LinkItemCollection LinksCollection { get; set; }
+```
+
 ####Block type property
 ```
 [Display(
@@ -196,6 +218,21 @@ namespace SomeName.Project.Areas.Layout.ViewModels
 <div class="RedTextBlock">
     <p>@Model.Text</p>
 </div>
+```
+###Raw string
+```
+@Html.Raw(@Model.AdditionalHeadCode)
+```
+###Content Area
+```
+@(Html.PropertyFor(m => m.Header,
+                      new
+                          {
+                              CustomTag = "header",
+                              CssClass = "",
+                              ChildrenCustomTagName = "div",
+                              ChildrenCssClass = "row",
+                          }))
 ```
 ##Controllers
 ###Example 1
