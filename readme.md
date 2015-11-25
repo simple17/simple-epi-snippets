@@ -1,11 +1,11 @@
 #Epi
 Simple snippets/cheatsheet/whatever for EPiServer 7.5
 
-[Models](#models)
-[ViewModels](#viewmodels)
-[Controllers](#controllers)
-[Stuff](#stuff)
-[Interesting links](#interesting-links)
+* [Models](#models)
+* [ViewModels](#viewmodels)
+* [Controllers](#controllers)
+* [Stuff](#stuff)
+* [Interesting links](#interesting-links)
 
 ##Models
 ### Simple model
