@@ -215,7 +215,7 @@ namespace SomeName.Project.Areas.Layout.ViewModels
     }
 }
 ```
-## Views[View]
+## <a name="view"></a> Views
 ```
 @model SomeName.Project.Areas.Layout.ViewModels.SigniforRedTextViewModel
 <div class="RedTextBlock">
