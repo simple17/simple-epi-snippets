@@ -1,7 +1,7 @@
 #Epi
 Simple snippets/cheatsheet/whatever for EPiServer 7.5
 
-*(#Views)
+[View](#view)
 
 
 ##Models
@@ -215,7 +215,7 @@ namespace SomeName.Project.Areas.Layout.ViewModels
     }
 }
 ```
-##Views[Views]
+## Views[View]
 ```
 @model SomeName.Project.Areas.Layout.ViewModels.SigniforRedTextViewModel
 <div class="RedTextBlock">
