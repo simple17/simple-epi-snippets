@@ -1,6 +1,9 @@
 #Epi
 Simple snippets/cheatsheet/whatever for EPiServer 7.5
 
+*(#Views)
+
+
 ##Models
 ### Simple model
 ####Example 1
@@ -212,7 +215,7 @@ namespace SomeName.Project.Areas.Layout.ViewModels
     }
 }
 ```
-##Views
+##Views[Views]
 ```
 @model SomeName.Project.Areas.Layout.ViewModels.SigniforRedTextViewModel
 <div class="RedTextBlock">
