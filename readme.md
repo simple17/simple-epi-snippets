@@ -16,13 +16,13 @@ using System.ComponentModel.DataAnnotations;
 using EPiServer.Core;
 using EPiServer.DataAbstraction;
 using EPiServer.DataAnnotations;
+using DigiOne.Core.DataAbstraction;
+using DigiOne.Core.Styles;
 
+using EPiServer;
 namespace SomeName.Project.Areas.Layout.Models
 {
-    using DigiOne.Core.DataAbstraction;
-    using DigiOne.Core.Styles;
 
-    using EPiServer;
 
     [ContentType(DisplayName = "Project block name",
     GroupName = "SomeName Project",
@@ -76,7 +76,6 @@ namespace SomeName.Project.Areas.Layout.Models
 ###Property types
 ####Bool
 ```
-[CultureSpecific]
 [Display(
     Name = "Autoplay",
     Description = "Autoplay",
@@ -96,7 +95,6 @@ public virtual string Width { get; set; }
 ```
 ####Url
 ```
-[CultureSpecific]
 [Display(
     Name = "Poster",
     Description = "Url to Poster image",
@@ -106,7 +104,6 @@ public virtual Url Poster { get; set; }
 ```
 ####Content area
 ```
-[CultureSpecific]
 [Display(
     Name = "Main",
     Description = "Main Content",
@@ -127,7 +124,6 @@ public virtual XhtmlString Policy { get; set; }
 ```
 ####Link Collection(Custom)
 ```
-[CultureSpecific]
 [Display(
     Name = "Links",
     Description = "Header links",
@@ -147,7 +143,6 @@ public virtual ProjectVideoPlayerData VideoContent { get; set; }
 ```
 ####Integer
 ```
-[CultureSpecific]
 [Range(50, 30000)]
 [Display(
     Name = "Speed",
@@ -193,14 +188,13 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-
 using EPiServer.Core;
+using DigiOne.Core.Styles;
+using EPiServer;
 
 namespace SomeName.Project.Areas.Layout.ViewModels
 {
-    using DigiOne.Core.Styles;
 
-    using EPiServer;
 
     public class ProjectImageViewModel
     {
@@ -274,16 +268,16 @@ namespace SomeName.Project.Areas.Layout.Controllers
 ```
 ###Example 2
 ```
+using System.Web.Mvc;
+
+using SomeName.Project.Areas.Layout.Models;
+using SomeName.Project.Areas.Layout.ViewModels;
+
+using EPiServer.Shell;
+using EPiServer.Web.Mvc;
+
 namespace SomeName.Project.Areas.Layout.Controllers
 {
-    using System.Web.Mvc;
-
-    using SomeName.Project.Areas.Layout.Models;
-    using SomeName.Project.Areas.Layout.ViewModels;
-
-    using EPiServer.Shell;
-    using EPiServer.Web.Mvc;
-
     public class ProjectRedTextController : BlockController<ProjectRedTextData>
     {
         public override ActionResult Index(ProjectRedTextData currentContent)
@@ -298,7 +292,7 @@ namespace SomeName.Project.Areas.Layout.Controllers
 ```
 ##Stuff
 ###Media
-To make a new filetypes available for uploading you need to declare class for each type.
+To make new filetypes available for uploading you need to declare class for each type.
 Layout\SomeName.ProjectName\Media\VideoFile.cs
 
 ```
