@@ -131,7 +131,17 @@ public virtual XhtmlString Policy { get; set; }
     Order = 50)]
 public virtual LinkItemCollection LinksCollection { get; set; }
 ```
-
+####Image reference
+NOTE: You can remove UIHint if needed.
+```
+[UIHint(UIHint.Image)]
+[Display(
+    Name = "Background image URL",
+    Description = "Background image URL",
+    GroupName = SystemTabNames.Content,
+    Order = 40)]
+public virtual ContentReference BackgroundImageUrl { get; set; }
+```
 ####Block type property
 ```
 [Display(
