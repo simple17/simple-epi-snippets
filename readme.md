@@ -264,7 +264,7 @@ namespace SomeName.Project.Areas.Layout.Controllers
     {
         public override ActionResult Index(ProjectImageData currentBlock)
         {
-            return PartialView(Paths.ToResource(this.GetType(), "Areas/Layout/Views/Image/Index.cshtml"), new ProjectImageViewModel
+            return PartialView(Paths.ToResource(this.GetType(), "Views/Blocks/Image/Index.cshtml"), new ProjectImageViewModel
             {
                 Image = currentBlock.Image,
                 AltText = currentBlock.AltText,
