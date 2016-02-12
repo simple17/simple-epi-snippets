@@ -328,5 +328,5 @@ namespace SomeName.Project.Media
 }
 ```
 ##Interesting links
-[Awesome EPI](https://github.com/b1thunt3r/awesome-EPiServer)
-[404Handler](https://www.coderesort.com/p/epicode/wiki/404Handler)
+* [Awesome EPI](https://github.com/b1thunt3r/awesome-EPiServer)
+* [404Handler](https://www.coderesort.com/p/epicode/wiki/404Handler)
