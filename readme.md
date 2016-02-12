@@ -4,6 +4,7 @@ Simple snippets/cheatsheet/whatever for EPiServer 7.5
 * [Models](#models)
 * [ViewModels](#viewmodels)
 * [Controllers](#controllers)
+* [Views] (#views)
 * [Stuff](#stuff)
 * [Interesting links](#interesting-links)
 
@@ -328,3 +329,4 @@ namespace SomeName.Project.Media
 ```
 ##Interesting links
 [Awesome EPI](https://github.com/b1thunt3r/awesome-EPiServer)
+[404Handler](https://www.coderesort.com/p/epicode/wiki/404Handler)
