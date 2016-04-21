@@ -328,7 +328,7 @@ namespace SomeName.Project.Media
 }
 ```
 
-###Simle select or list checkboxes property
+###Simple select or list checkboxes property
 First of all declare class with data.
 ```
 using System.Collections.Generic;
@@ -367,3 +367,4 @@ public virtual string Icon { get; set; }
 ##Interesting links
 * [Awesome EPI](https://github.com/b1thunt3r/awesome-EPiServer)
 * [404Handler](https://www.coderesort.com/p/epicode/wiki/404Handler)
+* [Using custom CSS in edit mode](http://world.episerver.com/blogs/Ben-McKernan/Dates/2014/12/using-custom-css-in-edit-mode/)
