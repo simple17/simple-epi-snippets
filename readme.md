@@ -327,6 +327,43 @@ namespace SomeName.Project.Media
     var uniqueId = string.Format("carousel-{0:N}", Guid.NewGuid());
 }
 ```
+
+###Simle select or list checkboxes property
+First of all declare class with data.
+```
+using System.Collections.Generic;
+using System.Linq;
+using EPiServer.Shell.ObjectEditing;
+
+namespace Project.Business.Selection
+{
+    public class ResourceIconSelection : ISelectionFactory
+    {
+        public IEnumerable<ISelectItem> GetSelections(ExtendedMetadata metadata)
+        {
+            var iconsList = new SortedDictionary<string, string>();
+
+            iconsList.Add("Link", "link");
+            iconsList.Add("Media", "media");
+            iconsList.Add("PDF", "pdf");
+
+            return iconsList
+                .Select(x => new SelectItem() { Text = x.Key, Value = x.Value })
+                .ToArray();
+        }
+    }
+}
+```
+Next declare property in your model. For select use 'SelectOne' and for list of checkboxes use 'SelectMany'.
+```
+[SelectOne(SelectionFactoryType = typeof(ResourceIconSelection))]
+[Display(
+    Name = "Icon",
+    GroupName = SystemTabNames.Content,
+    Order = 10)]
+public virtual string Icon { get; set; }
+```
+
 ##Interesting links
 * [Awesome EPI](https://github.com/b1thunt3r/awesome-EPiServer)
 * [404Handler](https://www.coderesort.com/p/epicode/wiki/404Handler)
