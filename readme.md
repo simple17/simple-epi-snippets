@@ -310,6 +310,23 @@ namespace SomeName.Project.Areas.Layout.Controllers
     }
 }
 ```
+###Adding ulrResolver and contentLoader
+```
+private readonly IContentLoader _contentLoader;
+private readonly UrlResolver _urlResolver;
+
+public UltibroFlameLandingPageController(IContentLoader contentLoader)
+{
+    _contentLoader = contentLoader;
+    _urlResolver = ServiceLocator.Current.GetInstance<UrlResolver>();
+}
+```
+###Getting items from content area
+```
+var videos = currentPage.VideosArea != null
+                ? currentPage.VideosArea.FilteredContents.OfType<UltibroFlameVideoData>().ToList()
+                : new List<UltibroFlameVideoData>();
+```                
 ##Stuff
 ###Media
 To make new filetypes available for uploading you need to declare class for each type.
