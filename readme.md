@@ -4,7 +4,7 @@ Simple snippets/cheatsheet/whatever for EPiServer 7.5
 * [Models](#models)
 * [ViewModels](#viewmodels)
 * [Controllers](#controllers)
-* [Views] (#views)
+* [Views](#views)
 * [Stuff](#stuff)
 * [Interesting links](#interesting-links)
 
@@ -172,6 +172,11 @@ Value range - `[Range(50, 2000)]`
 public override String CommonHeadCustomHTML { get; set; }
 ```
 
+###Allow data types
+```
+[AllowedTypes(new[] { typeof(UltibroFlameVideoData)})]
+```
+
 ###Default values
 ```
 public override void SetDefaultValues(ContentType contentType)
@@ -244,6 +249,10 @@ namespace SomeName.Project.Areas.Layout.ViewModels
                               ChildrenCustomTagName = "div",
                               ChildrenCssClass = "row",
                           }))
+```
+###Links
+```
+@Url.ContentUrl(video.Thumbnail)
 ```
 ##Controllers
 ###Example 1
