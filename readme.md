@@ -9,7 +9,7 @@ Simple snippets/cheatsheet/whatever for EPiServer 7.5
 * [Interesting links](#interesting-links)
 
 ##Models
-### Simple model
+###Simple model
 ####Example 1
 ```
 using System.ComponentModel.DataAnnotations;
