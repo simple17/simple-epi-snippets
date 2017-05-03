@@ -1,4 +1,4 @@
-#Epi
+# Epi
 Simple snippets/cheatsheet/whatever for EPiServer 7.5
 
 * [Models](#models)
@@ -8,9 +8,9 @@ Simple snippets/cheatsheet/whatever for EPiServer 7.5
 * [Stuff](#stuff)
 * [Interesting links](#interesting-links)
 
-##Models
-###Simple model
-####Example 1
+## Models
+### Simple model
+#### Example 1
 ```
 using System.ComponentModel.DataAnnotations;
 
@@ -46,7 +46,7 @@ namespace SomeName.Project.Areas.Layout.Models
 }
 
 ```
-####Example 2
+#### Example 2
 ```
 using System.ComponentModel.DataAnnotations;
 using EPiServer.DataAbstraction;
@@ -74,8 +74,8 @@ namespace SomeName.Project.Areas.Layout.Models
     }
 }
 ```
-###Property types
-####Bool
+### Property types
+#### Bool
 ```
 [Display(
     Name = "Autoplay",
@@ -84,7 +84,7 @@ namespace SomeName.Project.Areas.Layout.Models
     Order = 70)]
 public virtual bool Autoplay { get; set; }
 ```
-####String
+#### String
 ```
 [CultureSpecific]
 [Display(
@@ -94,7 +94,7 @@ public virtual bool Autoplay { get; set; }
     Order = 50)]
 public virtual string Width { get; set; }
 ```
-####Url
+#### Url
 ```
 [Display(
     Name = "Poster",
@@ -103,7 +103,7 @@ public virtual string Width { get; set; }
     Order = 40)]
 public virtual Url Poster { get; set; }
 ```
-####Content area
+#### Content area
 ```
 [Display(
     Name = "Main",
@@ -113,7 +113,7 @@ public virtual Url Poster { get; set; }
 public virtual ContentArea MainContent { get; set; }
 ```
 
-####RTE
+#### RTE
 ```
 [CultureSpecific]
 [Display(
@@ -123,7 +123,7 @@ public virtual ContentArea MainContent { get; set; }
     Order = 65)]
 public virtual XhtmlString Policy { get; set; }
 ```
-####Link Collection(Custom)
+#### Link Collection(Custom)
 ```
 [Display(
     Name = "Links",
@@ -132,7 +132,7 @@ public virtual XhtmlString Policy { get; set; }
     Order = 50)]
 public virtual LinkItemCollection LinksCollection { get; set; }
 ```
-####Image reference
+#### Image reference
 NOTE: You can remove UIHint if needed.
 ```
 [UIHint(UIHint.Image)]
@@ -143,7 +143,7 @@ NOTE: You can remove UIHint if needed.
     Order = 40)]
 public virtual ContentReference BackgroundImageUrl { get; set; }
 ```
-####Block type property
+#### Block type property
 ```
 [Display(
     Name = "Video content",
@@ -152,7 +152,7 @@ public virtual ContentReference BackgroundImageUrl { get; set; }
     Order = 100)]
 public virtual ProjectVideoPlayerData VideoContent { get; set; }
 ```
-####Integer
+#### Integer
 ```
 [Range(50, 30000)]
 [Display(
@@ -162,22 +162,22 @@ public virtual ProjectVideoPlayerData VideoContent { get; set; }
     Order = 50)]
 public virtual Int32 Speed { get; set; }
 ```
-###Property attributes
+### Property attributes
 Required - `[Required]`
 Value range - `[Range(50, 2000)]`
 
-###Hide extended property
+### Hide extended property
 ```
 [ScaffoldColumn(false)]
 public override String CommonHeadCustomHTML { get; set; }
 ```
 
-###Allow data types
+### Allow data types
 ```
 [AllowedTypes(new[] { typeof(UltibroFlameVideoData)})]
 ```
 
-###Default values
+### Default values
 ```
 public override void SetDefaultValues(ContentType contentType)
 {
@@ -187,8 +187,8 @@ public override void SetDefaultValues(ContentType contentType)
 }
 ```
 
-##ViewModels
-###Example 1
+## ViewModels
+### Example 1
 ```
 namespace SomeName.Project.Areas.Layout.ViewModels
 {
@@ -198,7 +198,7 @@ namespace SomeName.Project.Areas.Layout.ViewModels
     }
 }
 ```
-###Example 2
+### Example 2
 ```
 using System;
 using System.Collections.Generic;
@@ -228,18 +228,18 @@ namespace SomeName.Project.Areas.Layout.ViewModels
     }
 }
 ```
-##Views
+## Views
 ```
 @model SomeName.Project.Areas.Layout.ViewModels.SigniforRedTextViewModel
 <div class="RedTextBlock">
     <p>@Model.Text</p>
 </div>
 ```
-###Raw string
+### Raw string
 ```
 @Html.Raw(@Model.AdditionalHeadCode)
 ```
-###Content Area
+### Content Area
 ```
 @(Html.PropertyFor(m => m.Header,
                       new
@@ -250,12 +250,12 @@ namespace SomeName.Project.Areas.Layout.ViewModels
                               ChildrenCssClass = "row",
                           }))
 ```
-###Links
+### Links
 ```
 @Url.ContentUrl(video.Thumbnail)
 ```
-##Controllers
-###Example 1
+## Controllers
+### Example 1
 ```
 using System;
 using System.Collections.Generic;
@@ -286,7 +286,7 @@ namespace SomeName.Project.Areas.Layout.Controllers
     }
 }
 ```
-###Example 2
+### Example 2
 ```
 using System.Web.Mvc;
 
@@ -310,7 +310,7 @@ namespace SomeName.Project.Areas.Layout.Controllers
     }
 }
 ```
-###Adding ulrResolver and contentLoader
+### Adding ulrResolver and contentLoader
 ```
 private readonly IContentLoader _contentLoader;
 private readonly UrlResolver _urlResolver;
@@ -321,14 +321,14 @@ public UltibroFlameLandingPageController(IContentLoader contentLoader)
     _urlResolver = ServiceLocator.Current.GetInstance<UrlResolver>();
 }
 ```
-###Getting items from content area
+### Getting items from content area
 ```
 var videos = currentPage.VideosArea != null
                 ? currentPage.VideosArea.FilteredContents.OfType<UltibroFlameVideoData>().ToList()
                 : new List<UltibroFlameVideoData>();
 ```                
-##Stuff
-###Media
+## Stuff
+### Media
 To make new filetypes available for uploading you need to declare class for each type.
 Layout\SomeName.ProjectName\Media\VideoFile.cs
 
@@ -347,14 +347,14 @@ namespace SomeName.Project.Media
     }
 }
 ```
-###Unique IDs
+### Unique IDs
 ```
 @{
     var uniqueId = string.Format("carousel-{0:N}", Guid.NewGuid());
 }
 ```
 
-###Simple select or list checkboxes property
+###  Simple select or list checkboxes property
 First of all declare class with data.
 ```
 using System.Collections.Generic;
@@ -390,7 +390,7 @@ Next declare property in your model. For select use 'SelectOne' and for list of 
 public virtual string Icon { get; set; }
 ```
 
-##Interesting links
+## Interesting links
 * [Awesome EPI](https://github.com/b1thunt3r/awesome-EPiServer)
 * [404Handler](https://www.coderesort.com/p/epicode/wiki/404Handler)
 * [Using custom CSS in edit mode](http://world.episerver.com/blogs/Ben-McKernan/Dates/2014/12/using-custom-css-in-edit-mode/)
