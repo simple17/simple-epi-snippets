@@ -390,6 +390,30 @@ Next declare property in your model. For select use 'SelectOne' and for list of 
 public virtual string Icon { get; set; }
 ```
 
+### Get children
+ex1
+```
+private readonly IContentLoader _contentLoader;
+...
+var children =
+    FilterForVisitor.Filter(
+        _contentLoader.GetChildren<TesArticlePage>(currentPageReference, LanguageSelector.AutoDetect()))
+        .OfType<TesArticlePage>()
+        .Select(this.toArticleListItem);
+```
+ex2
+```
+IEnumerable<ArticlePage> children = 
+    DataFactory.Instance.GetChildren(pageLink)
+    .Where(child => child is ArticlePage)
+    .Cast<ArticlePage>();
+```
+ex3
+```
+IEnumerable<TesArticlePage> children = _contentLoader
+    .GetChildren<TesArticlePage>(currentPageReference, LanguageSelector.AutoDetect());
+```
+
 ## Interesting links
 * [Awesome EPI](https://github.com/b1thunt3r/awesome-EPiServer)
 * [404Handler](https://www.coderesort.com/p/epicode/wiki/404Handler)
