@@ -390,6 +390,11 @@ Next declare property in your model. For select use 'SelectOne' and for list of 
 public virtual string Icon { get; set; }
 ```
 
+### Get Category
+```
+var category = article.Category.Any() ? Category.Find(article.Category.First()).LocalizedDescription : string.Empty;
+```
+
 ### Get children
 ex1
 ```
