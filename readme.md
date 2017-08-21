@@ -177,6 +177,26 @@ public override String CommonHeadCustomHTML { get; set; }
 [AllowedTypes(new[] { typeof(UltibroFlameVideoData)})]
 ```
 
+### Allow page types
+```
+
+namespace Boomerang.UsOncology.Website.Areas.BrandPage.Models
+{
+    [ContentType(
+        DisplayName = "BrandPage", 
+        GUID = "0e4f7257-ee68-478c-b3d6-f32c342ac46d", 
+        Description = "Page used to group Brand Indications page")]
+    [AvailableContentTypes(
+        Availability.Specific, 
+        Include = new[] { 
+            typeof(BrandLandingPage.Models.BrandLandingPage),
+            typeof(OnePageTemplatePage.Models.OnePageTemplatePage),
+            typeof(ServicePage.Models.ServicePage),
+            typeof(BlankPage.Models.BlankPage)
+        })]
+        ......
+```
+
 ### Default values
 ```
 public override void SetDefaultValues(ContentType contentType)
