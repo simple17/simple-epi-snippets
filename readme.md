@@ -270,6 +270,10 @@ namespace SomeName.Project.Areas.Layout.ViewModels
                               ChildrenCssClass = "row",
                           }))
 ```
+### URL for media
+```
+<div class="video-block" style="background-image: url(@Url.ContentUrl(Model.Image))">
+```
 ### Links
 ```
 @Url.ContentUrl(video.Thumbnail)
